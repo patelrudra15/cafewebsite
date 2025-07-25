@@ -1,102 +1,532 @@
+"use client"
+import { useState, useEffect, useRef } from "react";
+import Head from "next/head";
 import Image from "next/image";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import { FiMenu, FiX, FiArrowRight, FiInstagram, FiFacebook, FiTwitter, FiLink, FiCoffee, FiClock, FiMapPin } from "react-icons/fi";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeLink, setActiveLink] = useState("Home");
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const [hoveredLink, setHoveredLink] = useState(null);
+  const navRef = useRef(null);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  // Custom cursor effect for navbar links
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setCursorPosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // Scroll effect for navbar
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setScrolled(latest > 50);
+  });
+
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "Menu", path: "/Menu" },
+    { name: "About", path: "/About" },
+    { name: "Contact", path: "/Contact" },
+  ];
+
+  // Feature cards data
+  const features = [
+    {
+      icon: <FiCoffee className="w-8 h-8 text-cafe-gold" />,
+      title: "Artisan Coffee",
+      description: "Small-batch roasted beans from sustainable farms",
+      delay: 0.1
+    },
+    {
+      icon: <FiClock className="w-8 h-8 text-cafe-gold" />,
+      title: "Open Late",
+      description: "We're here for your late-night coffee cravings",
+      delay: 0.2
+    },
+    {
+      icon: <FiMapPin className="w-8 h-8 text-cafe-gold" />,
+      title: "Cozy Space",
+      description: "Designed for productivity and relaxation",
+      delay: 0.3
+    }
+  ];
+
+  return (
+    <div className="bg-cafe-light min-h-screen relative overflow-x-hidden">
+      <Head>
+        <title>Espreso | Premium Artisan Cafe</title>
+        <meta name="description" content="Experience handcrafted coffee & pastries in a cozy atmosphere" />
+      </Head>
+
+      {/* ===== ANIMATED NAVBAR WITH CUSTOM CURSOR EFFECT ===== */}
+      <motion.nav
+        ref={navRef}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5, type: "spring" }}
+        className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? "bg-white shadow-xl py-2" : "bg-white/90 py-4"}`}
+      >
+        <div className="container mx-auto px-6 flex justify-between items-center">
+          {/* Logo with 3D hover effect */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center cursor-pointer group"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <motion.div
+              whileHover={{ rotateY: 180 }}
+              transition={{ duration: 0.6 }}
+              className="w-10 h-10 rounded-full bg-cafe-gold flex items-center justify-center shadow-lg"
+            >
+              <FiCoffee className="text-black text-xl" />
+            </motion.div>
+            <motion.span
+              className="ml-3 text-2xl font-bold text-black group-hover:text-cafe-gold transition-colors"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              Espreso
+            </motion.span>
+          </motion.div>
+
+          {/* Desktop Menu with Magnetic Links */}
+          <div className="hidden md:flex space-x-8 relative">
+            {navLinks.map((link) => (
+              <motion.div
+                key={link.name}
+                className="relative"
+                onMouseEnter={() => setHoveredLink(link)}
+                onMouseLeave={() => setHoveredLink(null)}
+              >
+                <motion.a
+                  href={link.path}
+                  onClick={() => setActiveLink(link.name)}
+                  className={`relative z-10 text-lg ${activeLink === link.name ? 'text-cafe-gold' : 'text-black'} hover:text-cafe-gold transition-colors px-2 py-1`}
+                  whileHover={{
+                    color: "#D4A762",
+                  }}
+                >
+                  {link.name}
+                </motion.a>
+
+                {/* Animated underline */}
+                {activeLink === link.name && (
+                  <motion.div
+                    layoutId="navUnderline"
+                    className="absolute bottom-0 left-0 w-full h-0.5 bg-cafe-gold"
+                    transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
+                  />
+                )}
+              </motion.div>
+            ))}
+
+            {/* Custom cursor effect */}
+
+          </div>
+
+          {/* Mobile Menu Button with Morphing Animation */}
+          <motion.button
+            className="md:hidden text-black text-2xl relative z-50"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Menu"
           >
-            Read our docs
-          </a>
+            <motion.div
+              animate={isMenuOpen ? "open" : "closed"}
+              variants={{
+                open: { rotate: 180 },
+                closed: { rotate: 0 }
+              }}
+              transition={{ duration: 0.3 }}
+            >
+              {isMenuOpen ? (
+                <FiX className="w-6 h-6" />
+              ) : (
+                <FiMenu className="w-6 h-6" />
+              )}
+            </motion.div>
+          </motion.button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+        {/* Mobile Menu Dropdown with Staggered Animation */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden bg-white/95 backdrop-blur-md overflow-hidden"
+            >
+              <div className="container mx-auto px-6 py-4 flex flex-col space-y-6">
+                {navLinks.map((link, index) => (
+                  <motion.a
+                    key={link.name}
+                    href={link.path}
+                    onClick={() => {
+                      setActiveLink(link.name);
+                      setIsMenuOpen(false);
+                    }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 * index }}
+                    className={`text-xl ${activeLink === link.name ? 'text-cafe-gold' : 'text-black'} py-2 border-b border-black/10`}
+                  >
+                    <motion.span
+                      whileHover={{ x: 10 }}
+                      className="flex items-center"
+                    >
+                      <FiArrowRight className="mr-3 text-cafe-gold" />
+                      {link.name}
+                    </motion.span>
+                  </motion.a>
+                ))}
+
+                {/* Social links in mobile menu */}
+                <motion.div
+                  className="flex space-x-6 pt-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  {[FiInstagram, FiFacebook, FiTwitter].map((Icon, i) => (
+                    <motion.a
+                      key={i}
+                      href="#"
+                      whileHover={{ y: -5, scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="text-black hover:text-cafe-gold text-xl"
+                    >
+                      <Icon className="w-6 h-6" />
+                    </motion.a>
+                  ))}
+                </motion.div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.nav>
+
+      {/* ===== ENHANCED HERO SECTION ===== */}
+      <section id="home" className="pt-32 pb-20 px-6 relative">
+        <div className="container mx-auto flex flex-col md:flex-row items-center gap-12 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, type: "spring" }}
+            className="md:w-1/2"
+          >
+            <motion.h1
+              className="text-5xl md:text-7xl font-bold text-cafe-dark mb-6 leading-tight"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              Crafted <span className="text-cafe-gold">Perfection</span> in Every Cup
+            </motion.h1>
+
+            <motion.p
+              className="text-lg text-cafe-brown mb-8 max-w-lg"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.4 }}
+            >
+              Discover the art of specialty coffee with our hand-selected beans and masterfully crafted beverages.
+            </motion.p>
+
+            <motion.div
+              className="flex gap-4 flex-wrap"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.6 }}
+            >
+              <motion.button
+                whileHover={{
+                  scale: 1.05,
+                  backgroundColor: "#A79277",
+                  boxShadow: "0 10px 25px -5px rgba(166, 146, 119, 0.4)"
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-cafe-brown text-black px-8 py-4 rounded-full shadow-lg font-medium flex items-center"
+                onClick={() => window.location.href = "/Menu"}
+              >
+                Explore Menu
+                <FiArrowRight className="ml-2" />
+              </motion.button>
+
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
+            className="md:w-1/2 relative"
+          >
+            <div className="relative w-full h-96 md:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
+              <Image
+                src="/3d-rendering-cartoon-welcome-door.jpg"
+                alt="Artisan Coffee"
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
+                placeholder="blur"
+                blurDataURL="/images/coffee-hero.jpg"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/10 to-black/30"></div>
+
+              {/* Floating badge */}
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 1, type: "spring" }}
+                className="absolute top-6 right-6 bg-cafe-gold text-black px-4 py-2 rounded-full font-bold shadow-lg"
+              >
+                Since 2010
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ===== FEATURES SECTION ===== */}
+      <section id="about" className="py-20 px-6 bg-cafe-light/50">
+        <div className="container mx-auto">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            <h2 className="text-4xl font-bold text-cafe-dark mb-4">Why Choose Espreso</h2>
+            <p className="text-cafe-brown max-w-2xl mx-auto">
+              We're committed to excellence in every aspect of your coffee experience
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: feature.delay }}
+                viewport={{ once: true, margin: "-50px" }}
+                whileHover={{
+                  y: -10,
+                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)"
+                }}
+                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all"
+              >
+                <div className="w-16 h-16 rounded-full bg-cafe-gold/10 flex items-center justify-center mb-6">
+                  {feature.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-cafe-dark mb-3">{feature.title}</h3>
+                <p className="text-cafe-brown">{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== ADVANCED FOOTER ===== */}
+      <footer className="bg-black  text-white pt-16 pb-8 relative overflow-hidden">
+        <div className="container mx-auto px-6 relative z-20">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+            {/* Brand info */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex items-center mb-4">
+                <motion.div
+                  whileHover={{ rotateY: 180 }}
+                  transition={{ duration: 0.6 }}
+                  className="w-12 h-12 rounded-full bg-cafe-gold flex items-center justify-center shadow-lg"
+                >
+                  <FiCoffee className="text-xl text-black" />
+                </motion.div>
+                <h3 className="ml-3 text-2xl font-bold">Espreso</h3>
+              </div>
+              <p className="mb-4">123 Coffee Lane, Beanville</p>
+              <p className="mb-6">Open daily 7am-7pm</p>
+
+              {/* Newsletter signup */}
+              <div className="mt-6">
+                <h4 className="font-bold mb-3">Join Our Newsletter</h4>
+                <div className="flex">
+                  <input
+                    type="email"
+                    placeholder="Your email"
+                    className="bg-black/50 text-white px-4 py-3 rounded-l-full focus:outline-none focus:ring-2 focus:ring-cafe-gold w-full border border-white/20"
+                  />
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-amber-800 text-white px-4 py-3 rounded-r-full font-medium"
+                  >
+                    Join
+                  </motion.button>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Quick links with animated hover */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <h4 className="text-xl font-bold mb-6 relative inline-block">
+                Explore
+                <motion.span
+                  className="absolute bottom-0 left-0 w-full h-0.5 bg-cafe-gold"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                />
+              </h4>
+              <ul className="space-y-3">
+                {["Menu", "About Us", "Gallery", "Events", "Contact"].map((item, index) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 * index }}
+                    viewport={{ once: true }}
+                  >
+                    <a
+                      href="#"
+                      className="hover:text-cafe-gold transition-colors flex items-center group"
+                    >
+                      <motion.span
+                        whileHover={{ x: 5 }}
+                        className="flex items-center"
+                      >
+                        <FiArrowRight className="mr-2 text-cafe-gold opacity-0 group-hover:opacity-100 transition-opacity" />
+                        {item}
+                      </motion.span>
+                    </a>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Contact info */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <h4 className="text-xl font-bold mb-6 relative inline-block">
+                Contact
+                <motion.span
+                  className="absolute bottom-0 left-0 w-full h-0.5 bg-cafe-gold"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                />
+              </h4>
+              <ul className="space-y-4">
+                <motion.li
+                  className="flex items-start"
+                  whileHover={{ x: 5 }}
+                >
+                  <FiLink className="mt-1 mr-3 text-cafe-gold" />
+                  <div>
+                    <p>info@espresso.com</p>
+                    <p className="text-sm text-white/60">Email us</p>
+                  </div>
+                </motion.li>
+
+                <motion.li
+                  className="flex items-start"
+                  whileHover={{ x: 5 }}
+                >
+                  <FiLink className="mt-1 mr-3 text-cafe-gold" />
+                  <div>
+                    <p>+1 (555) 123-4567</p>
+                    <p className="text-sm text-white/60">Call us</p>
+                  </div>
+                </motion.li>
+              </ul>
+            </motion.div>
+
+            {/* Social media with interactive icons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <h4 className="text-xl font-bold mb-6 relative inline-block">
+                Follow Us
+                <motion.span
+                  className="absolute bottom-0 left-0 w-full h-0.5 bg-cafe-gold"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                />
+              </h4>
+              <div className="flex space-x-4 mb-8">
+                {[
+                  { icon: <FiInstagram />, name: "Instagram" },
+                  { icon: <FiFacebook />, name: "Facebook" },
+                  { icon: <FiTwitter />, name: "Twitter" }
+                ].map((social, index) => (
+                  <motion.a
+                    key={social.name}
+                    href="#"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ delay: 0.1 * index }}
+                    viewport={{ once: true }}
+                    whileHover={{
+                      y: -5,
+                      color: "#D4A762",
+                      scale: 1.1,
+                      backgroundColor: "rgba(212, 167, 98, 0.1)"
+                    }}
+                    className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-xl hover:border-cafe-gold transition-all"
+                    aria-label={social.name}
+                  >
+                    {social.icon}
+                  </motion.a>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Copyright with animated divider */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            viewport={{ once: true }}
+            className="border-t border-white/10 mt-12 pt-8 text-center text-white/60"
+          >
+            <p>© {new Date().getFullYear()} Espreso. All rights reserved.</p>
+            <div className="flex justify-center space-x-4 mt-4 text-sm">
+              <a href="#" className="hover:text-cafe-gold transition-colors">Privacy Policy</a>
+              <span>•</span>
+              <a href="#" className="hover:text-cafe-gold transition-colors">Terms of Service</a>
+            </div>
+          </motion.div>
+        </div>
       </footer>
     </div>
   );
