@@ -62,6 +62,7 @@ export default function Home() {
       <Head>
         <title>Espreso | Premium Artisan Cafe</title>
         <meta name="description" content="Experience handcrafted coffee & pastries in a cozy atmosphere" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
       {/* ===== ANIMATED NAVBAR WITH CUSTOM CURSOR EFFECT ===== */}
@@ -72,7 +73,7 @@ export default function Home() {
         transition={{ duration: 0.5, type: "spring" }}
         className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? "bg-white shadow-xl py-2" : "bg-white/90 py-4"}`}
       >
-        <div className="container mx-auto px-6 flex justify-between items-center">
+        <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
           {/* Logo with 3D hover effect */}
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -126,9 +127,6 @@ export default function Home() {
                 )}
               </motion.div>
             ))}
-
-            {/* Custom cursor effect */}
-
           </div>
 
           {/* Mobile Menu Button with Morphing Animation */}
@@ -163,7 +161,7 @@ export default function Home() {
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden bg-white/95 backdrop-blur-md overflow-hidden"
             >
-              <div className="container mx-auto px-6 py-4 flex flex-col space-y-6">
+              <div className="container mx-auto px-6 py-4 flex flex-col space-y-4">
                 {navLinks.map((link, index) => (
                   <motion.a
                     key={link.name}
@@ -175,7 +173,7 @@ export default function Home() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 * index }}
-                    className={`text-xl ${activeLink === link.name ? 'text-cafe-gold' : 'text-black'} py-2 border-b border-black/10`}
+                    className={`text-lg ${activeLink === link.name ? 'text-cafe-gold' : 'text-black'} py-2 border-b border-black/10`}
                   >
                     <motion.span
                       whileHover={{ x: 10 }}
@@ -213,16 +211,16 @@ export default function Home() {
       </motion.nav>
 
       {/* ===== ENHANCED HERO SECTION ===== */}
-      <section id="home" className="pt-32 pb-20 px-6 relative">
-        <div className="container mx-auto flex flex-col md:flex-row items-center gap-12 relative z-10">
+      <section id="home" className="pt-24 pb-12 px-4 sm:px-6 relative">
+        <div className="container mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, type: "spring" }}
-            className="md:w-1/2"
+            className="md:w-1/2 order-2 md:order-1 mt-8 md:mt-0"
           >
             <motion.h1
-              className="text-5xl md:text-7xl font-bold text-cafe-dark mb-6 leading-tight"
+              className="text-4xl sm:text-5xl md:text-6xl font-bold text-cafe-dark mb-4 md:mb-6 leading-tight"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
@@ -231,7 +229,7 @@ export default function Home() {
             </motion.h1>
 
             <motion.p
-              className="text-lg text-cafe-brown mb-8 max-w-lg"
+              className="text-base sm:text-lg text-cafe-brown mb-6 md:mb-8 max-w-lg"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -252,13 +250,12 @@ export default function Home() {
                   boxShadow: "0 10px 25px -5px rgba(166, 146, 119, 0.4)"
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-cafe-brown text-black px-8 py-4 rounded-full shadow-lg font-medium flex items-center"
+                className="bg-cafe-brown text-black px-6 py-3 sm:px-8 sm:py-4 rounded-full shadow-lg font-medium flex items-center text-sm sm:text-base"
                 onClick={() => window.location.href = "/Menu"}
               >
                 Explore Menu
                 <FiArrowRight className="ml-2" />
               </motion.button>
-
             </motion.div>
           </motion.div>
 
@@ -266,9 +263,9 @@ export default function Home() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
-            className="md:w-1/2 relative"
+            className="md:w-1/2 relative order-1 md:order-2"
           >
-            <div className="relative w-full h-96 md:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative w-full h-64 sm:h-80 md:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
               <Image
                 src="/3d-rendering-cartoon-welcome-door.jpg"
                 alt="Artisan Coffee"
@@ -286,7 +283,7 @@ export default function Home() {
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 1, type: "spring" }}
-                className="absolute top-6 right-6 bg-cafe-gold text-black px-4 py-2 rounded-full font-bold shadow-lg"
+                className="absolute top-4 right-4 bg-cafe-gold text-black px-3 py-1 sm:px-4 sm:py-2 rounded-full font-bold shadow-lg text-sm sm:text-base"
               >
                 Since 2010
               </motion.div>
@@ -296,22 +293,22 @@ export default function Home() {
       </section>
 
       {/* ===== FEATURES SECTION ===== */}
-      <section id="about" className="py-20 px-6 bg-cafe-light/50">
+      <section id="about" className="py-12 sm:py-16 px-4 sm:px-6 bg-cafe-light/50">
         <div className="container mx-auto">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            <h2 className="text-4xl font-bold text-cafe-dark mb-4">Why Choose Espreso</h2>
-            <p className="text-cafe-brown max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-bold text-cafe-dark mb-3 sm:mb-4">Why Choose Espreso</h2>
+            <p className="text-cafe-brown max-w-2xl mx-auto text-sm sm:text-base">
               We're committed to excellence in every aspect of your coffee experience
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
@@ -323,13 +320,13 @@ export default function Home() {
                   y: -10,
                   boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)"
                 }}
-                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all"
+                className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all"
               >
-                <div className="w-16 h-16 rounded-full bg-cafe-gold/10 flex items-center justify-center mb-6">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-cafe-gold/10 flex items-center justify-center mb-4 sm:mb-6">
                   {feature.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-cafe-dark mb-3">{feature.title}</h3>
-                <p className="text-cafe-brown">{feature.description}</p>
+                <h3 className="text-xl sm:text-2xl font-bold text-cafe-dark mb-2 sm:mb-3">{feature.title}</h3>
+                <p className="text-cafe-brown text-sm sm:text-base">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -337,9 +334,9 @@ export default function Home() {
       </section>
 
       {/* ===== ADVANCED FOOTER ===== */}
-      <footer className="bg-black  text-white pt-16 pb-8 relative overflow-hidden">
-        <div className="container mx-auto px-6 relative z-20">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+      <footer className="bg-black text-white pt-12 pb-6 sm:pt-16 sm:pb-8 relative overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 relative z-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
             {/* Brand info */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -351,28 +348,28 @@ export default function Home() {
                 <motion.div
                   whileHover={{ rotateY: 180 }}
                   transition={{ duration: 0.6 }}
-                  className="w-12 h-12 rounded-full bg-cafe-gold flex items-center justify-center shadow-lg"
+                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-cafe-gold flex items-center justify-center shadow-lg"
                 >
-                  <FiCoffee className="text-xl text-black" />
+                  <FiCoffee className="text-lg sm:text-xl text-black" />
                 </motion.div>
-                <h3 className="ml-3 text-2xl font-bold">Espreso</h3>
+                <h3 className="ml-3 text-xl sm:text-2xl font-bold">Espreso</h3>
               </div>
-              <p className="mb-4">123 Coffee Lane, Beanville</p>
-              <p className="mb-6">Open daily 7am-7pm</p>
+              <p className="mb-2 sm:mb-4 text-sm sm:text-base">123 Coffee Lane, Beanville</p>
+              <p className="mb-4 sm:mb-6 text-sm sm:text-base">Open daily 7am-7pm</p>
 
               {/* Newsletter signup */}
-              <div className="mt-6">
-                <h4 className="font-bold mb-3">Join Our Newsletter</h4>
+              <div className="mt-4 sm:mt-6">
+                <h4 className="font-bold mb-2 sm:mb-3 text-sm sm:text-base">Join Our Newsletter</h4>
                 <div className="flex">
                   <input
                     type="email"
                     placeholder="Your email"
-                    className="bg-black/50 text-white px-4 py-3 rounded-l-full focus:outline-none focus:ring-2 focus:ring-cafe-gold w-full border border-white/20"
+                    className="bg-black/50 text-white px-3 sm:px-4 py-2 sm:py-3 rounded-l-full focus:outline-none focus:ring-2 focus:ring-cafe-gold w-full border border-white/20 text-sm sm:text-base"
                   />
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-amber-800 text-white px-4 py-3 rounded-r-full font-medium"
+                    className="bg-amber-800 text-white px-3 sm:px-4 py-2 sm:py-3 rounded-r-full font-medium text-sm sm:text-base"
                   >
                     Join
                   </motion.button>
@@ -387,7 +384,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-xl font-bold mb-6 relative inline-block">
+              <h4 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 relative inline-block">
                 Explore
                 <motion.span
                   className="absolute bottom-0 left-0 w-full h-0.5 bg-cafe-gold"
@@ -397,7 +394,7 @@ export default function Home() {
                   viewport={{ once: true }}
                 />
               </h4>
-              <ul className="space-y-3">
+              <ul className="space-y-2 sm:space-y-3">
                 {["Menu", "About Us", "Gallery", "Events", "Contact"].map((item, index) => (
                   <motion.li
                     key={item}
@@ -405,6 +402,7 @@ export default function Home() {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 * index }}
                     viewport={{ once: true }}
+                    className="text-sm sm:text-base"
                   >
                     <a
                       href="#"
@@ -430,7 +428,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-xl font-bold mb-6 relative inline-block">
+              <h4 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 relative inline-block">
                 Contact
                 <motion.span
                   className="absolute bottom-0 left-0 w-full h-0.5 bg-cafe-gold"
@@ -440,26 +438,26 @@ export default function Home() {
                   viewport={{ once: true }}
                 />
               </h4>
-              <ul className="space-y-4">
+              <ul className="space-y-3 sm:space-y-4">
                 <motion.li
-                  className="flex items-start"
+                  className="flex items-start text-sm sm:text-base"
                   whileHover={{ x: 5 }}
                 >
                   <FiLink className="mt-1 mr-3 text-cafe-gold" />
                   <div>
                     <p>info@espresso.com</p>
-                    <p className="text-sm text-white/60">Email us</p>
+                    <p className="text-xs sm:text-sm text-white/60">Email us</p>
                   </div>
                 </motion.li>
 
                 <motion.li
-                  className="flex items-start"
+                  className="flex items-start text-sm sm:text-base"
                   whileHover={{ x: 5 }}
                 >
                   <FiLink className="mt-1 mr-3 text-cafe-gold" />
                   <div>
                     <p>+1 (555) 123-4567</p>
-                    <p className="text-sm text-white/60">Call us</p>
+                    <p className="text-xs sm:text-sm text-white/60">Call us</p>
                   </div>
                 </motion.li>
               </ul>
@@ -472,7 +470,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-xl font-bold mb-6 relative inline-block">
+              <h4 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 relative inline-block">
                 Follow Us
                 <motion.span
                   className="absolute bottom-0 left-0 w-full h-0.5 bg-cafe-gold"
@@ -482,7 +480,7 @@ export default function Home() {
                   viewport={{ once: true }}
                 />
               </h4>
-              <div className="flex space-x-4 mb-8">
+              <div className="flex space-x-3 sm:space-x-4 mb-6 sm:mb-8">
                 {[
                   { icon: <FiInstagram />, name: "Instagram" },
                   { icon: <FiFacebook />, name: "Facebook" },
@@ -501,7 +499,7 @@ export default function Home() {
                       scale: 1.1,
                       backgroundColor: "rgba(212, 167, 98, 0.1)"
                     }}
-                    className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-xl hover:border-cafe-gold transition-all"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/20 flex items-center justify-center text-lg sm:text-xl hover:border-cafe-gold transition-all"
                     aria-label={social.name}
                   >
                     {social.icon}
@@ -517,10 +515,10 @@ export default function Home() {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
             viewport={{ once: true }}
-            className="border-t border-white/10 mt-12 pt-8 text-center text-white/60"
+            className="border-t border-white/10 mt-8 sm:mt-12 pt-6 sm:pt-8 text-center text-white/60 text-xs sm:text-sm"
           >
             <p>© {new Date().getFullYear()} Espreso. All rights reserved.</p>
-            <div className="flex justify-center space-x-4 mt-4 text-sm">
+            <div className="flex justify-center space-x-3 sm:space-x-4 mt-3 sm:mt-4">
               <a href="#" className="hover:text-cafe-gold transition-colors">Privacy Policy</a>
               <span>•</span>
               <a href="#" className="hover:text-cafe-gold transition-colors">Terms of Service</a>

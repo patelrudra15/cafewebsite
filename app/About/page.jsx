@@ -96,7 +96,7 @@ export default function About() {
     {
       name: "Alex Johnson",
       role: "Founder & Head Barista",
-      image: "/barista-1.jpg",
+      image: "/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer.jpg",
       bio: "With over 15 years in specialty coffee, Alex brings passion and expertise to every cup.",
       delay: 0.1,
       social: {
@@ -108,7 +108,7 @@ export default function About() {
     {
       name: "Maria Garcia",
       role: "Pastry Chef",
-      image: "/pastry-chef.jpg",
+      image: "/beautiful-woman-showing-copy-space.jpg",
       bio: "Trained in Paris, Maria creates the perfect pairings for our coffee selections.",
       delay: 0.2,
       social: {
@@ -120,7 +120,7 @@ export default function About() {
     {
       name: "Jamal Smith",
       role: "Roast Master",
-      image: "/roast-master.jpg",
+      image: "/bohemian-man-with-his-arms-crossed.jpg",
       bio: "Jamal's small-batch roasting techniques bring out unique flavor profiles in our beans.",
       delay: 0.3,
       social: {
@@ -188,9 +188,7 @@ export default function About() {
       <Head>
         <title>About Espreso | Our Coffee Journey</title>
         <meta name="description" content="Discover our passion for coffee and the story behind Espreso" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
       {/* ===== ANIMATED NAVBAR ===== */}
@@ -201,7 +199,7 @@ export default function About() {
         transition={{ duration: 0.5, type: "spring" }}
         className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? "bg-white shadow-xl py-2" : "bg-white/90 py-4"}`}
       >
-        <div className="container mx-auto px-6 flex justify-between items-center">
+        <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -211,12 +209,12 @@ export default function About() {
             <motion.div
               whileHover={{ rotateY: 180 }}
               transition={{ duration: 0.6 }}
-              className="w-10 h-10 rounded-full bg-cafe-gold flex items-center justify-center shadow-lg"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-cafe-gold flex items-center justify-center shadow-lg"
             >
-              <FiCoffee className="text-black text-xl" />
+              <FiCoffee className="text-black text-lg sm:text-xl" />
             </motion.div>
             <motion.span 
-              className="ml-3 text-2xl font-bold text-black group-hover:text-cafe-gold transition-colors"
+              className="ml-2 sm:ml-3 text-xl sm:text-2xl font-bold text-black group-hover:text-cafe-gold transition-colors"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
@@ -226,7 +224,7 @@ export default function About() {
           </motion.div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8 relative">
+          <div className="hidden md:flex space-x-6 lg:space-x-8 relative">
             {navLinks.map((link) => (
               <motion.div
                 key={link.name}
@@ -237,7 +235,7 @@ export default function About() {
                 <motion.a
                   href={link.path}
                   onClick={() => setActiveLink(link.name)}
-                  className={`relative z-10 text-lg ${activeLink === link.name ? 'text-cafe-gold' : 'text-black'} hover:text-cafe-gold transition-colors px-2 py-1`}
+                  className={`relative z-10 text-base lg:text-lg ${activeLink === link.name ? 'text-cafe-gold' : 'text-black'} hover:text-cafe-gold transition-colors px-2 py-1`}
                   whileHover={{ 
                     color: "#D4A762",
                   }}
@@ -259,7 +257,7 @@ export default function About() {
 
           {/* Mobile Menu Button */}
           <motion.button
-            className="md:hidden text-black text-2xl relative z-50"
+            className="md:hidden text-black text-xl sm:text-2xl relative z-50"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Menu"
           >
@@ -272,9 +270,9 @@ export default function About() {
               transition={{ duration: 0.3 }}
             >
               {isMenuOpen ? (
-                <FiX className="w-6 h-6" />
+                <FiX className="w-5 h-5 sm:w-6 sm:h-6" />
               ) : (
-                <FiMenu className="w-6 h-6" />
+                <FiMenu className="w-5 h-5 sm:w-6 sm:h-6" />
               )}
             </motion.div>
           </motion.button>
@@ -289,7 +287,7 @@ export default function About() {
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden bg-white/95 backdrop-blur-md overflow-hidden"
             >
-              <div className="container mx-auto px-6 py-4 flex flex-col space-y-6">
+              <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4 flex flex-col space-y-4 sm:space-y-6">
                 {navLinks.map((link, index) => (
                   <motion.a
                     key={link.name}
@@ -301,13 +299,13 @@ export default function About() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 * index }}
-                    className={`text-xl ${activeLink === link.name ? 'text-cafe-gold' : 'text-black'} py-2 border-b border-black/10`}
+                    className={`text-lg sm:text-xl ${activeLink === link.name ? 'text-cafe-gold' : 'text-black'} py-2 border-b border-black/10`}
                   >
                     <motion.span 
                       whileHover={{ x: 10 }}
                       className="flex items-center"
                     >
-                      <FiArrowRight className="mr-3 text-cafe-gold" />
+                      <FiArrowRight className="mr-2 sm:mr-3 text-cafe-gold" />
                       {link.name}
                     </motion.span>
                   </motion.a>
@@ -315,7 +313,7 @@ export default function About() {
                 
                 {/* Social links in mobile menu */}
                 <motion.div 
-                  className="flex space-x-6 pt-4"
+                  className="flex space-x-4 sm:space-x-6 pt-3 sm:pt-4"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.5 }}
@@ -326,9 +324,9 @@ export default function About() {
                       href="#"
                       whileHover={{ y: -5, scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
-                      className="text-black hover:text-cafe-gold text-xl"
+                      className="text-black hover:text-cafe-gold text-lg sm:text-xl"
                     >
-                      <Icon className="w-6 h-6" />
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
                     </motion.a>
                   ))}
                 </motion.div>
@@ -339,9 +337,9 @@ export default function About() {
       </motion.nav>
 
       {/* ===== HERO SECTION WITH SLIDESHOW ===== */}
-      <section className="pt-32 pb-20 px-6 relative bg-cafe-dark text-white">
+      <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 relative bg-cafe-dark text-white">
         <div className="container mx-auto">
-          <div className="relative w-full h-screen rounded-3xl overflow-hidden shadow-2xl">
+          <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-screen rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden shadow-lg sm:shadow-xl md:shadow-2xl">
             {/* Slideshow */}
             <div className="relative w-full h-full">
               {slides.map((slide, index) => (
@@ -364,13 +362,13 @@ export default function About() {
                   
                   {/* Slide content */}
                   <motion.div 
-                    className="absolute bottom-1/4 left-0 right-0 text-center px-6"
+                    className="absolute bottom-1/4 sm:bottom-1/3 left-0 right-0 text-center px-4 sm:px-6"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: index === currentSlide ? 1 : 0, y: index === currentSlide ? 0 : 50 }}
                     transition={{ delay: 0.3 }}
                   >
                     <motion.h1 
-                      className="text-4xl md:text-6xl font-bold mb-4 font-serif"
+                      className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 font-serif"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: index === currentSlide ? 1 : 0 }}
                       transition={{ delay: 0.5 }}
@@ -378,7 +376,7 @@ export default function About() {
                       {slide.title}
                     </motion.h1>
                     <motion.p 
-                      className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto"
+                      className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 max-w-2xl mx-auto"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: index === currentSlide ? 1 : 0 }}
                       transition={{ delay: 0.7 }}
@@ -393,26 +391,26 @@ export default function About() {
             {/* Navigation arrows */}
             <button 
               onClick={goToPrevSlide}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/30 text-white p-3 rounded-full hover:bg-black/50 transition-all z-10"
+              className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-black/30 text-white p-2 sm:p-3 rounded-full hover:bg-black/50 transition-all z-10"
               aria-label="Previous slide"
             >
-              <FiChevronLeft className="w-6 h-6" />
+              <FiChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
             </button>
             <button 
               onClick={goToNextSlide}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/30 text-white p-3 rounded-full hover:bg-black/50 transition-all z-10"
+              className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-black/30 text-white p-2 sm:p-3 rounded-full hover:bg-black/50 transition-all z-10"
               aria-label="Next slide"
             >
-              <FiChevronRight className="w-6 h-6" />
+              <FiChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
             </button>
             
             {/* Slide indicators */}
-            <div className="absolute bottom-8 left-0 right-0 flex justify-center space-x-2 z-10">
+            <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-0 right-0 flex justify-center space-x-2 z-10">
               {slides.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all ${index === currentSlide ? 'bg-cafe-gold w-6' : 'bg-white/50'}`}
+                  className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${index === currentSlide ? 'bg-cafe-gold w-4 sm:w-6' : 'bg-white/50'}`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
@@ -422,7 +420,7 @@ export default function About() {
       </section>
 
       {/* ===== OUR STORY SECTION ===== */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white">
         <div className="container mx-auto max-w-5xl text-center">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -430,9 +428,9 @@ export default function About() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold text-cafe-dark mb-6 font-serif">Our Story</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-cafe-dark mb-4 sm:mb-6 font-serif">Our Story</h2>
             <motion.p 
-              className="text-lg text-cafe-brown mb-8 max-w-3xl mx-auto"
+              className="text-base sm:text-lg text-cafe-brown mb-6 sm:mb-8 max-w-3xl mx-auto"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
@@ -442,7 +440,7 @@ export default function About() {
             </motion.p>
             
             <motion.div 
-              className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12"
+              className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mt-8 sm:mt-12"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ staggerChildren: 0.1 }}
@@ -455,13 +453,13 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-cafe-light p-6 rounded-xl"
+                  className="bg-cafe-light p-4 sm:p-6 rounded-lg sm:rounded-xl"
                 >
-                  <div className="w-16 h-16 rounded-full bg-cafe-gold/10 flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-cafe-gold/10 flex items-center justify-center mx-auto mb-3 sm:mb-4">
                     {value.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-cafe-dark mb-2">{value.title}</h3>
-                  <p className="text-cafe-brown text-sm">{value.description}</p>
+                  <h3 className="text-lg sm:text-xl font-bold text-cafe-dark mb-1 sm:mb-2">{value.title}</h3>
+                  <p className="text-cafe-brown text-xs sm:text-sm">{value.description}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -470,62 +468,62 @@ export default function About() {
       </section>
 
       {/* ===== OUR JOURNEY SECTION ===== */}
-      <section className="py-20 px-6 bg-cafe-light/50">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-cafe-light/50">
         <div className="container mx-auto">
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            <h2 className="text-4xl font-bold text-cafe-dark mb-4 font-serif">Our Journey</h2>
-            <p className="text-cafe-brown max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-bold text-cafe-dark mb-3 sm:mb-4 font-serif">Our Journey</h2>
+            <p className="text-cafe-brown max-w-2xl mx-auto text-sm sm:text-base">
               A timeline of our coffee adventure and community impact
             </p>
           </motion.div>
           
           {/* Animated timeline */}
           <div className="relative max-w-4xl mx-auto">
-            {/* Vertical line */}
+            {/* Vertical line - hidden on mobile */}
             <motion.div 
-              className="absolute left-1/2 h-full w-0.5 bg-cafe-gold/30 transform -translate-x-1/2"
+              className="hidden sm:block absolute left-1/2 h-full w-0.5 bg-cafe-gold/30 transform -translate-x-1/2"
               initial={{ scaleY: 0 }}
               whileInView={{ scaleY: 1 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
             />
             
-            <div className="space-y-16">
+            <div className="space-y-8 sm:space-y-16">
               {milestones.map((milestone, index) => (
                 <motion.div
                   key={milestone.year}
-                  className={`relative flex ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} items-center`}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  className="relative flex flex-col sm:flex-row items-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
                   {/* Year badge */}
-                  <div className={`flex-shrink-0 w-24 h-24 rounded-full bg-cafe-gold flex items-center justify-center text-2xl font-bold text-white z-10 ${index % 2 === 0 ? 'mr-8' : 'ml-8'}`}>
+                  <div className={`flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-cafe-gold flex items-center justify-center text-xl sm:text-2xl font-bold text-white z-10 mb-4 sm:mb-0 ${index % 2 === 0 ? 'sm:mr-6 md:mr-8' : 'sm:ml-6 md:ml-8'}`}>
                     {milestone.year}
                   </div>
                   
                   {/* Content card */}
                   <motion.div 
-                    className={`flex-1 p-8 rounded-2xl shadow-lg bg-white ${index % 2 === 0 ? 'text-left' : 'text-right'}`}
+                    className={`flex-1 p-4 sm:p-6 md:p-8 rounded-lg sm:rounded-xl md:rounded-2xl shadow-md sm:shadow-lg bg-white text-left sm:${index % 2 === 0 ? 'text-left' : 'sm:text-right'}`}
                     whileHover={{ 
-                      y: -10,
-                      boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)"
+                      y: -5,
+                      boxShadow: "0 10px 20px -5px rgba(0, 0, 0, 0.1)"
                     }}
                   >
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 rounded-full bg-cafe-gold/10 flex items-center justify-center mr-4">
+                    <div className="flex items-center mb-3 sm:mb-4">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-cafe-gold/10 flex items-center justify-center mr-3 sm:mr-4">
                         {milestone.icon}
                       </div>
-                      <h3 className="text-2xl font-bold text-cafe-dark">{milestone.title}</h3>
+                      <h3 className="text-xl sm:text-2xl font-bold text-cafe-dark">{milestone.title}</h3>
                     </div>
-                    <p className="text-cafe-brown">{milestone.description}</p>
+                    <p className="text-cafe-brown text-sm sm:text-base">{milestone.description}</p>
                   </motion.div>
                 </motion.div>
               ))}
@@ -535,22 +533,22 @@ export default function About() {
       </section>
 
       {/* ===== MEET THE TEAM SECTION ===== */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white">
         <div className="container mx-auto">
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            <h2 className="text-4xl font-bold text-cafe-dark mb-4 font-serif">Meet The Team</h2>
-            <p className="text-cafe-brown max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-bold text-cafe-dark mb-3 sm:mb-4 font-serif">Meet The Team</h2>
+            <p className="text-cafe-brown max-w-2xl mx-auto text-sm sm:text-base">
               The passionate people behind your perfect cup
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {teamMembers.map((member) => (
               <motion.div
                 key={member.name}
@@ -559,37 +557,37 @@ export default function About() {
                 transition={{ duration: 0.5, delay: member.delay }}
                 viewport={{ once: true, margin: "-50px" }}
                 whileHover={{ 
-                  y: -10,
-                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)"
+                  y: -5,
+                  boxShadow: "0 10px 20px -5px rgba(0, 0, 0, 0.1)"
                 }}
-                className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all overflow-hidden group"
+                className="bg-white rounded-xl sm:rounded-2xl shadow-md sm:shadow-lg hover:shadow-xl transition-all overflow-hidden group"
               >
-                <div className="relative h-64 w-full overflow-hidden">
+                <div className="relative h-48 sm:h-56 w-full overflow-hidden">
                   <Image
                     src={member.image}
                     alt={member.name}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                    <div className="flex space-x-4">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
+                    <div className="flex space-x-3 sm:space-x-4">
                       <a href={member.social.instagram} className="text-white hover:text-cafe-gold transition-colors">
-                        <FiInstagram className="w-5 h-5" />
+                        <FiInstagram className="w-4 h-4 sm:w-5 sm:h-5" />
                       </a>
                       <a href={member.social.twitter} className="text-white hover:text-cafe-gold transition-colors">
-                        <FiTwitter className="w-5 h-5" />
+                        <FiTwitter className="w-4 h-4 sm:w-5 sm:h-5" />
                       </a>
                       <a href={member.social.facebook} className="text-white hover:text-cafe-gold transition-colors">
-                        <FiFacebook className="w-5 h-5" />
+                        <FiFacebook className="w-4 h-4 sm:w-5 sm:h-5" />
                       </a>
                     </div>
                   </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-cafe-dark mb-1">{member.name}</h3>
-                  <p className="text-cafe-gold mb-4">{member.role}</p>
-                  <p className="text-cafe-brown">{member.bio}</p>
+                <div className="p-4 sm:p-6">
+                  <h3 className="text-xl sm:text-2xl font-bold text-cafe-dark mb-1">{member.name}</h3>
+                  <p className="text-cafe-gold text-sm sm:text-base mb-2 sm:mb-3">{member.role}</p>
+                  <p className="text-cafe-brown text-xs sm:text-sm">{member.bio}</p>
                 </div>
               </motion.div>
             ))}
@@ -598,10 +596,10 @@ export default function About() {
       </section>
 
       {/* ===== COMMUNITY SECTION ===== */}
-      <section className="py-20 px-6 bg-cafe-dark text-black">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-cafe-dark text-black">
         <div className="container mx-auto text-center">
           <motion.h2 
-            className="text-4xl font-bold mb-6 font-serif"
+            className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 font-serif"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -611,7 +609,7 @@ export default function About() {
           </motion.h2>
           
           <motion.p 
-            className="text-xl max-w-3xl mx-auto mb-12"
+            className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-8 sm:mb-12"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
@@ -621,7 +619,7 @@ export default function About() {
           </motion.p>
           
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto shadow-xl"
+            className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto shadow-lg"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ staggerChildren: 0.1 }}
@@ -639,10 +637,10 @@ export default function About() {
                 whileInView={{ scale: 1 }}
                 transition={{ type: "spring", delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white/10 rounded-xl p-6 backdrop-blur-sm hover:bg-white/20 transition-all"
+                className="bg-white/10 rounded-lg sm:rounded-xl p-4 sm:p-6 backdrop-blur-sm hover:bg-white/20 transition-all"
               >
-                <p className="text-3xl md:text-4xl font-bold text-cafe-gold mb-2">{stat.number}</p>
-                <p className="text-sm md:text-base">{stat.label}</p>
+                <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-cafe-gold mb-1 sm:mb-2">{stat.number}</p>
+                <p className="text-xs sm:text-sm md:text-base">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -650,9 +648,9 @@ export default function About() {
       </section>
 
       {/* ===== FOOTER ===== */}
-      <footer className="bg-black text-white pt-16 pb-8 relative overflow-hidden">
-        <div className="container mx-auto px-6 relative z-20">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+      <footer className="bg-black text-white pt-12 sm:pt-16 pb-6 sm:pb-8 relative overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 relative z-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
             {/* Brand info */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -660,32 +658,32 @@ export default function About() {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <div className="flex items-center mb-4">
+              <div className="flex items-center mb-3 sm:mb-4">
                 <motion.div
                   whileHover={{ rotateY: 180 }}
                   transition={{ duration: 0.6 }}
-                  className="w-12 h-12 rounded-full bg-cafe-gold flex items-center justify-center shadow-lg"
+                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-cafe-gold flex items-center justify-center shadow-lg"
                 >
-                  <FiCoffee className="text-xl text-black" />
+                  <FiCoffee className="text-lg sm:text-xl text-black" />
                 </motion.div>
-                <h3 className="ml-3 text-2xl font-bold">Espreso</h3>
+                <h3 className="ml-2 sm:ml-3 text-xl sm:text-2xl font-bold">Espreso</h3>
               </div>
-              <p className="mb-4">123 Coffee Lane, Beanville</p>
-              <p className="mb-6">Open daily 7am-7pm</p>
+              <p className="mb-2 sm:mb-4 text-sm sm:text-base">123 Coffee Lane, Beanville</p>
+              <p className="mb-4 sm:mb-6 text-sm sm:text-base">Open daily 7am-7pm</p>
               
               {/* Newsletter signup */}
-              <div className="mt-6">
-                <h4 className="font-bold mb-3">Join Our Newsletter</h4>
+              <div className="mt-4 sm:mt-6">
+                <h4 className="font-bold mb-2 sm:mb-3 text-sm sm:text-base">Join Our Newsletter</h4>
                 <div className="flex">
                   <input 
                     type="email" 
                     placeholder="Your email" 
-                    className="bg-black/50 text-white px-4 py-3 rounded-l-full focus:outline-none focus:ring-2 focus:ring-cafe-gold w-full border border-white/20"
+                    className="bg-black/50 text-white px-3 sm:px-4 py-2 sm:py-3 rounded-l-full focus:outline-none focus:ring-2 focus:ring-cafe-gold w-full border border-white/20 text-sm sm:text-base"
                   />
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-white text-black px-4 py-4 rounded-r-full font-medium"
+                    className="bg-white text-black px-3 sm:px-4 py-2 sm:py-3 rounded-r-full font-medium text-sm sm:text-base"
                   >
                     Join
                   </motion.button>
@@ -700,7 +698,7 @@ export default function About() {
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-xl font-bold mb-6 relative inline-block">
+              <h4 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 relative inline-block">
                 Explore
                 <motion.span 
                   className="absolute bottom-0 left-0 w-full h-0.5 bg-cafe-gold"
@@ -710,7 +708,7 @@ export default function About() {
                   viewport={{ once: true }}
                 />
               </h4>
-              <ul className="space-y-3">
+              <ul className="space-y-2 sm:space-y-3">
                 {["Menu", "About Us", "Gallery", "Events", "Contact"].map((item, index) => (
                   <motion.li
                     key={item}
@@ -721,7 +719,7 @@ export default function About() {
                   >
                     <a 
                       href="#" 
-                      className="hover:text-cafe-gold transition-colors flex items-center group"
+                      className="hover:text-cafe-gold transition-colors flex items-center group text-sm sm:text-base"
                     >
                       <motion.span 
                         whileHover={{ x: 5 }}
@@ -743,7 +741,7 @@ export default function About() {
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-xl font-bold mb-6 relative inline-block">
+              <h4 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 relative inline-block">
                 Contact
                 <motion.span 
                   className="absolute bottom-0 left-0 w-full h-0.5 bg-cafe-gold"
@@ -753,26 +751,26 @@ export default function About() {
                   viewport={{ once: true }}
                 />
               </h4>
-              <ul className="space-y-4">
+              <ul className="space-y-3 sm:space-y-4">
                 <motion.li 
-                  className="flex items-start"
+                  className="flex items-start text-sm sm:text-base"
                   whileHover={{ x: 5 }}
                 >
-                  <FiLink className="mt-1 mr-3 text-cafe-gold" />
+                  <FiLink className="mt-0.5 sm:mt-1 mr-2 sm:mr-3 text-cafe-gold" />
                   <div>
                     <p>info@espresso.com</p>
-                    <p className="text-sm text-white/60">Email us</p>
+                    <p className="text-xs sm:text-sm text-white/60">Email us</p>
                   </div>
                 </motion.li>
                 
                 <motion.li 
-                  className="flex items-start"
+                  className="flex items-start text-sm sm:text-base"
                   whileHover={{ x: 5 }}
                 >
-                  <FiLink className="mt-1 mr-3 text-cafe-gold" />
+                  <FiLink className="mt-0.5 sm:mt-1 mr-2 sm:mr-3 text-cafe-gold" />
                   <div>
                     <p>+1 (555) 123-4567</p>
-                    <p className="text-sm text-white/60">Call us</p>
+                    <p className="text-xs sm:text-sm text-white/60">Call us</p>
                   </div>
                 </motion.li>
               </ul>
@@ -785,7 +783,7 @@ export default function About() {
               transition={{ duration: 0.5, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-xl font-bold mb-6 relative inline-block">
+              <h4 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 relative inline-block">
                 Follow Us
                 <motion.span 
                   className="absolute bottom-0 left-0 w-full h-0.5 bg-cafe-gold"
@@ -795,7 +793,7 @@ export default function About() {
                   viewport={{ once: true }}
                 />
               </h4>
-              <div className="flex space-x-4 mb-8">
+              <div className="flex space-x-3 sm:space-x-4 mb-6 sm:mb-8">
                 {[
                   { icon: <FiInstagram />, name: "Instagram" },
                   { icon: <FiFacebook />, name: "Facebook" },
@@ -814,7 +812,7 @@ export default function About() {
                       scale: 1.1,
                       backgroundColor: "rgba(212, 167, 98, 0.1)"
                     }}
-                    className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-xl hover:border-cafe-gold transition-all"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/20 flex items-center justify-center text-lg sm:text-xl hover:border-cafe-gold transition-all"
                     aria-label={social.name}
                   >
                     {social.icon}
@@ -830,10 +828,10 @@ export default function About() {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
             viewport={{ once: true }}
-            className="border-t border-white/10 mt-12 pt-8 text-center text-white/60"
+            className="border-t border-white/10 mt-8 sm:mt-12 pt-6 sm:pt-8 text-center text-white/60 text-xs sm:text-sm"
           >
             <p>© {new Date().getFullYear()} Espreso. All rights reserved.</p>
-            <div className="flex justify-center space-x-4 mt-4 text-sm">
+            <div className="flex justify-center space-x-3 sm:space-x-4 mt-2 sm:mt-4">
               <a href="#" className="hover:text-cafe-gold transition-colors">Privacy Policy</a>
               <span>•</span>
               <a href="#" className="hover:text-cafe-gold transition-colors">Terms of Service</a>
