@@ -570,13 +570,13 @@ export default function Menu() {
                         </div>
                       </div>
                       <div className="p-3 sm:p-4">
-                        <p className="text-sm sm:text-base text-cafe-brown mb-2 sm:mb-3 line-clamp-2">{item.description}</p>
+                        <p className="text-sm sm:text-base text-black mb-2 sm:mb-3 line-clamp-2">{item.description}</p>
                         <div className="flex flex-wrap gap-1 sm:gap-2">
                           {Object.entries(item.prices).map(([size, price]) => (
                             <motion.span 
                               key={size}
                               whileHover={{ scale: 1.05 }}
-                              className="bg-white text-cafe-dark text-xs px-2 sm:px-3 py-1 rounded-full"
+                              className="bg-white text-black text-xs px-2 sm:px-3 py-1 rounded-full"
                             >
                               {size}: ${price.toFixed(2)}
                             </motion.span>

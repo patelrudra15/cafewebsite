@@ -455,7 +455,7 @@ export default function About() {
                   viewport={{ once: true }}
                   className="bg-white p-4 sm:p-6 rounded-lg sm:rounded-xl"
                 >
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-cafe-gold/10 flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <div className="w-12 text-black h-12 sm:w-16 sm:h-16 rounded-full bg-cafe-gold/10 flex items-center justify-center mx-auto mb-3 sm:mb-4">
                     {value.icon}
                   </div>
                   <h3 className="text-lg sm:text-xl font-bold text-black mb-1 sm:mb-2">{value.title}</h3>
@@ -518,7 +518,7 @@ export default function About() {
                     }}
                   >
                     <div className="flex items-center mb-3 sm:mb-4">
-                      <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white flex items-center justify-center mr-3 sm:mr-4">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white text-black flex items-center justify-center mr-3 sm:mr-4">
                         {milestone.icon}
                       </div>
                       <h3 className="text-xl sm:text-2xl font-bold text-black">{milestone.title}</h3>
