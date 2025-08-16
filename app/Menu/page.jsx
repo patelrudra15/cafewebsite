@@ -84,7 +84,7 @@ const menuItems = [
     name: 'Lemonade',
     description: 'Refreshing lemon drink',
     category: 'Cold Drinks',
-    image: '/lemonade-glass.jpg',
+    image: '/lemonade.jpg',
     prices: { small: 2.50, medium: 3.00, large: 3.50 }
   },
   {

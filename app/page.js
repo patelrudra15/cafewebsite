@@ -58,7 +58,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="bg-cafe-light min-h-screen relative overflow-x-hidden">
+    <div className="bg-white min-h-screen relative overflow-x-hidden">
       <Head>
         <title>Espreso | Premium Artisan Cafe</title>
         <meta name="description" content="Experience handcrafted coffee & pastries in a cozy atmosphere" />
@@ -250,7 +250,7 @@ export default function Home() {
                   boxShadow: "0 10px 25px -5px rgba(166, 146, 119, 0.4)"
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-cafe-brown text-black px-6 py-3 sm:px-8 sm:py-4 rounded-full shadow-lg font-medium flex items-center text-sm sm:text-base"
+                className="bg-white text-black px-6 py-3 sm:px-8 sm:py-4 rounded-full shadow-lg font-medium flex items-center text-sm sm:text-base"
                 onClick={() => window.location.href = "/Menu"}
               >
                 Explore Menu
