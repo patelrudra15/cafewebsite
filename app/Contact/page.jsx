@@ -49,7 +49,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="bg-cafe-light min-h-screen relative overflow-x-hidden">
+    <div className="bg-white min-h-screen relative overflow-x-hidden">
       <Head>
         <title>Espreso | Contact Us</title>
         <meta name="description" content="Get in touch with Espreso - Premium Artisan Cafe" />
@@ -74,7 +74,7 @@ export default function ContactPage() {
             <motion.div
               whileHover={{ rotateY: 180 }}
               transition={{ duration: 0.6 }}
-              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-cafe-gold flex items-center justify-center shadow-lg"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center shadow-lg"
             >
               <FiCoffee className="text-black text-lg sm:text-xl" />
             </motion.div>
@@ -98,7 +98,7 @@ export default function ContactPage() {
                 <motion.a
                   href={link.path}
                   onClick={() => setActiveLink(link.name)}
-                  className={`relative z-10 text-base lg:text-lg ${activeLink === link.name ? 'text-cafe-gold' : 'text-black'} hover:text-cafe-gold transition-colors px-2 py-1`}
+                  className={`relative z-10 text-base lg:text-lg ${activeLink === link.name ? 'text-black' : 'text-black'} hover:text-cafe-gold transition-colors px-2 py-1`}
                   whileHover={{ 
                     color: "#D4A762",
                   }}
@@ -109,7 +109,7 @@ export default function ContactPage() {
                 {activeLink === link.name && (
                   <motion.div 
                     layoutId="navUnderline"
-                    className="absolute bottom-0 left-0 w-full h-0.5 bg-cafe-gold"
+                    className="absolute bottom-0 left-0 w-full h-0.5 bg-white"
                     transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
                   />
                 )}
@@ -147,7 +147,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white/95 backdrop-blur-md overflow-hidden"
+              className="md:hidden bg-white backdrop-blur-md overflow-hidden"
             >
               <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4 flex flex-col space-y-4 sm:space-y-6">
                 {navLinks.map((link, index) => (
@@ -161,13 +161,13 @@ export default function ContactPage() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 * index }}
-                    className={`text-lg sm:text-xl ${activeLink === link.name ? 'text-cafe-gold' : 'text-black'} py-2 border-b border-black/10`}
+                    className={`text-lg sm:text-xl ${activeLink === link.name ? 'text-black' : 'text-black'} py-2 border-b border-black/10`}
                   >
                     <motion.span 
                       whileHover={{ x: 10 }}
                       className="flex items-center"
                     >
-                      <FiArrowRight className="mr-2 sm:mr-3 text-cafe-gold" />
+                      <FiArrowRight className="mr-2 sm:mr-3 text-black" />
                       {link.name}
                     </motion.span>
                   </motion.a>
@@ -213,16 +213,16 @@ export default function ContactPage() {
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.1 }}
               viewport={{ once: true }}
-              className="text-3xl sm:text-4xl md:text-5xl font-bold text-cafe-dark mb-3 sm:mb-4"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-3 sm:mb-4"
             >
-              Get in <span className="text-cafe-gold">Touch</span>
+              Get in <span className="text-black">Touch</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
               viewport={{ once: true }}
-              className="text-cafe-brown max-w-2xl mx-auto text-sm sm:text-base"
+              className="text-black max-w-2xl mx-auto text-sm sm:text-base"
             >
               We'd love to hear from you! Reach out for reservations, questions, or just to say hello.
             </motion.p>
@@ -237,11 +237,11 @@ export default function ContactPage() {
               viewport={{ once: true }}
               className="bg-white p-6 sm:p-8 rounded-xl sm:rounded-2xl shadow-md sm:shadow-lg"
             >
-              <h2 className="text-xl sm:text-2xl font-bold text-cafe-dark mb-4 sm:mb-6">Send us a message</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-black mb-4 sm:mb-6">Send us a message</h2>
               
               <form onSubmit={handleSubmit}>
                 <div className="mb-4 sm:mb-6">
-                  <label htmlFor="name" className="block text-cafe-dark mb-1 sm:mb-2 text-sm sm:text-base">Your Name</label>
+                  <label htmlFor="name" className="block text-black mb-1 sm:mb-2 text-sm sm:text-base">Your Name</label>
                   <input
                     type="text"
                     id="name"
@@ -254,7 +254,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="mb-4 sm:mb-6">
-                  <label htmlFor="phone" className="block text-cafe-dark mb-1 sm:mb-2 text-sm sm:text-base">Your Number</label>
+                  <label htmlFor="phone" className="block text-black mb-1 sm:mb-2 text-sm sm:text-base">Your Number</label>
                   <input
                     type="tel"
                     id="phone"
@@ -267,7 +267,7 @@ export default function ContactPage() {
                 </div>
                 
                 <div className="mb-4 sm:mb-6">
-                  <label htmlFor="email" className="block text-cafe-dark mb-1 sm:mb-2 text-sm sm:text-base">Email Address</label>
+                  <label htmlFor="email" className="block text-black mb-1 sm:mb-2 text-sm sm:text-base">Email Address</label>
                   <input
                     type="email"
                     id="email"
@@ -280,7 +280,7 @@ export default function ContactPage() {
                 </div>
                 
                 <div className="mb-4 sm:mb-6">
-                  <label htmlFor="message" className="block text-cafe-dark mb-1 sm:mb-2 text-sm sm:text-base">Your Message</label>
+                  <label htmlFor="message" className="block text-black mb-1 sm:mb-2 text-sm sm:text-base">Your Message</label>
                   <textarea
                     id="message"
                     name="message"
@@ -297,7 +297,7 @@ export default function ContactPage() {
                   whileHover={{ scale: 1.02, backgroundColor: "#A79277" }}
                   whileTap={{ scale: 0.98 }}
                   disabled={formStatus === "sending"}
-                  className="w-full bg-cafe-brown text-black bg-amber-600 py-3 sm:py-4 rounded-lg font-bold flex items-center justify-center text-sm sm:text-base"
+                  className="w-full bg-white text-black py-3 sm:py-4 rounded-lg font-bold flex items-center justify-center text-sm sm:text-base"
                 >
                   {formStatus === "sending" ? (
                     <span className="flex items-center">
@@ -340,13 +340,13 @@ export default function ContactPage() {
                   whileHover={{ y: -5 }}
                   className="bg-white p-4 sm:p-6 rounded-lg sm:rounded-xl shadow-sm sm:shadow-md flex items-start"
                 >
-                  <div className="bg-cafe-gold/10 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
-                    <FiMail className="text-cafe-gold w-5 h-5 sm:w-6 sm:h-6" />
+                  <div className="bg-white p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
+                    <FiMail className="text-black w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-cafe-dark mb-1 text-sm sm:text-base">Email Us</h3>
-                    <p className="text-cafe-brown text-xs sm:text-sm">info@espresso.com</p>
-                    <p className="text-cafe-brown text-xs sm:text-sm">reservations@espresso.com</p>
+                    <h3 className="font-bold text-black mb-1 text-sm sm:text-base">Email Us</h3>
+                    <p className="text-black text-xs sm:text-sm">info@espresso.com</p>
+                    <p className="text-black text-xs sm:text-sm">reservations@espresso.com</p>
                   </div>
                 </motion.div>
                 
@@ -354,13 +354,13 @@ export default function ContactPage() {
                   whileHover={{ y: -5 }}
                   className="bg-white p-4 sm:p-6 rounded-lg sm:rounded-xl shadow-sm sm:shadow-md flex items-start"
                 >
-                  <div className="bg-cafe-gold/10 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
-                    <FiPhone className="text-cafe-gold w-5 h-5 sm:w-6 sm:h-6" />
+                  <div className="bg-white p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
+                    <FiPhone className="text-black w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-cafe-dark mb-1 text-sm sm:text-base">Call Us</h3>
-                    <p className="text-cafe-brown text-xs sm:text-sm">+1 (555) 123-4567</p>
-                    <p className="text-cafe-brown text-xs sm:text-sm">Mon-Fri: 9am-5pm</p>
+                    <h3 className="font-bold text-black mb-1 text-sm sm:text-base">Call Us</h3>
+                    <p className="text-black text-xs sm:text-sm">+1 (555) 123-4567</p>
+                    <p className="text-black text-xs sm:text-sm">Mon-Fri: 9am-5pm</p>
                   </div>
                 </motion.div>
                 
@@ -368,13 +368,13 @@ export default function ContactPage() {
                   whileHover={{ y: -5 }}
                   className="bg-white p-4 sm:p-6 rounded-lg sm:rounded-xl shadow-sm sm:shadow-md flex items-start"
                 >
-                  <div className="bg-cafe-gold/10 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
-                    <FiMapPin className="text-cafe-gold w-5 h-5 sm:w-6 sm:h-6" />
+                  <div className="bg-white p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
+                    <FiMapPin className="text-black w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-cafe-dark mb-1 text-sm sm:text-base">Visit Us</h3>
-                    <p className="text-cafe-brown text-xs sm:text-sm">123 Coffee Lane</p>
-                    <p className="text-cafe-brown text-xs sm:text-sm">Beanville, CA 90210</p>
+                    <h3 className="font-bold text-black mb-1 text-sm sm:text-base">Visit Us</h3>
+                    <p className="text-black text-xs sm:text-sm">123 Coffee Lane</p>
+                    <p className="text-black text-xs sm:text-sm">Beanville, CA 90210</p>
                   </div>
                 </motion.div>
                 
@@ -382,13 +382,13 @@ export default function ContactPage() {
                   whileHover={{ y: -5 }}
                   className="bg-white p-4 sm:p-6 rounded-lg sm:rounded-xl shadow-sm sm:shadow-md flex items-start"
                 >
-                  <div className="bg-cafe-gold/10 p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
-                    <FiClock className="text-cafe-gold w-5 h-5 sm:w-6 sm:h-6" />
+                  <div className="bg-white p-2 sm:p-3 rounded-full mr-3 sm:mr-4">
+                    <FiClock className="text-black w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-cafe-dark mb-1 text-sm sm:text-base">Hours</h3>
-                    <p className="text-cafe-brown text-xs sm:text-sm">Mon-Fri: 7am-7pm</p>
-                    <p className="text-cafe-brown text-xs sm:text-sm">Sat-Sun: 8am-6pm</p>
+                    <h3 className="font-bold text-black mb-1 text-sm sm:text-base">Hours</h3>
+                    <p className="text-black text-xs sm:text-sm">Mon-Fri: 7am-7pm</p>
+                    <p className="text-black text-xs sm:text-sm">Sat-Sun: 8am-6pm</p>
                   </div>
                 </motion.div>
               </motion.div>

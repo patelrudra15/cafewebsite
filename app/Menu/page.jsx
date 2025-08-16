@@ -28,7 +28,7 @@ const menuItems = [
     name: 'Latte',
     description: 'Espresso with a lot of steamed milk and a small amount of foam',
     category: 'Coffee',
-    image: '/view-3d-coffee-cup.jpg',
+    image: '/lavender-latte-with-flowers.jpg',
     prices: { small: 3.50, medium: 4.00, large: 4.50 }
   },
   {
@@ -277,7 +277,7 @@ export default function Menu() {
                 <motion.a
                   href={link.path}
                   onClick={() => setActiveLink(link.name)}
-                  className={`relative z-10 text-base lg:text-lg ${activeLink === link.name ? 'text-cafe-gold' : 'text-black'} hover:text-cafe-gold transition-colors px-2 py-1`}
+                  className={`relative z-10 text-base lg:text-lg ${activeLink === link.name ? 'text-black' : 'text-black'} hover:text-cafe-gold transition-colors px-2 py-1`}
                   whileHover={{ 
                     color: "#D4A762",
                   }}
@@ -487,7 +487,7 @@ export default function Menu() {
                       transition={{ delay: 0.3 }}
                       className="mb-6 sm:mb-8"
                     >
-                      <h2 className="text-lg sm:text-xl font-semibold text-cafe-dark mb-3 sm:mb-4">Sizes & Prices</h2>
+                      <h2 className="text-lg sm:text-xl font-semibold text-black mb-3 sm:mb-4">Sizes & Prices</h2>
                       <div className="space-y-2 sm:space-y-3">
                         {Object.entries(selectedItem.prices).map(([size, price]) => (
                           <motion.div
@@ -496,10 +496,10 @@ export default function Menu() {
                             className="flex justify-between items-center bg-white p-3 sm:p-4 rounded-lg"
                           >
                             <div>
-                              <span className="capitalize font-medium text-sm sm:text-base text-cafe-dark">{size}</span>
+                              <span className="capitalize font-medium text-sm sm:text-base text-black">{size}</span>
                             </div>
                             <div className="flex items-center space-x-3 sm:space-x-4">
-                              <span className="font-bold text-sm sm:text-base text-cafe-dark">${price.toFixed(2)}</span>
+                              <span className="font-bold text-sm sm:text-base text-black">${price.toFixed(2)}</span>
                               <motion.button
                                 onClick={() => addToCart(selectedItem, size)}
                                 whileHover={{ scale: 1.1 }}
@@ -538,7 +538,7 @@ export default function Menu() {
                   initial={{ y: -20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.1 }}
-                  className="text-3xl sm:text-4xl font-bold text-cafe-dark mb-6 sm:mb-8 text-center"
+                  className="text-3xl sm:text-4xl font-bold text-black mb-6 sm:mb-8 text-center"
                 >
                   Our Menu
                 </motion.h1>
@@ -566,7 +566,7 @@ export default function Menu() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                         <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4">
                           <h2 className="text-lg sm:text-xl font-bold text-white">{item.name}</h2>
-                          <p className="text-cafe-gold text-xs sm:text-sm">{item.category}</p>
+                          <p className="text-white text-xs sm:text-sm">{item.category}</p>
                         </div>
                       </div>
                       <div className="p-3 sm:p-4">

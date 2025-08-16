@@ -184,7 +184,7 @@ export default function About() {
   ];
 
   return (
-    <div className="bg-cafe-light min-h-screen relative overflow-x-hidden">
+    <div className="bg-white min-h-screen relative overflow-x-hidden">
       <Head>
         <title>About Espreso | Our Coffee Journey</title>
         <meta name="description" content="Discover our passion for coffee and the story behind Espreso" />
@@ -209,7 +209,7 @@ export default function About() {
             <motion.div
               whileHover={{ rotateY: 180 }}
               transition={{ duration: 0.6 }}
-              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-cafe-gold flex items-center justify-center shadow-lg"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center shadow-lg"
             >
               <FiCoffee className="text-black text-lg sm:text-xl" />
             </motion.div>
@@ -235,7 +235,7 @@ export default function About() {
                 <motion.a
                   href={link.path}
                   onClick={() => setActiveLink(link.name)}
-                  className={`relative z-10 text-base lg:text-lg ${activeLink === link.name ? 'text-cafe-gold' : 'text-black'} hover:text-cafe-gold transition-colors px-2 py-1`}
+                  className={`relative z-10 text-base lg:text-lg ${activeLink === link.name ? 'text-black' : 'text-black'} hover:text-cafe-gold transition-colors px-2 py-1`}
                   whileHover={{ 
                     color: "#D4A762",
                   }}
@@ -299,7 +299,7 @@ export default function About() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 * index }}
-                    className={`text-lg sm:text-xl ${activeLink === link.name ? 'text-cafe-gold' : 'text-black'} py-2 border-b border-black/10`}
+                    className={`text-lg sm:text-xl ${activeLink === link.name ? 'text-black' : 'text-black'} py-2 border-b border-black/10`}
                   >
                     <motion.span 
                       whileHover={{ x: 10 }}
@@ -337,7 +337,7 @@ export default function About() {
       </motion.nav>
 
       {/* ===== HERO SECTION WITH SLIDESHOW ===== */}
-      <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 relative bg-cafe-dark text-white">
+      <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 relative bg-white text-white">
         <div className="container mx-auto">
           <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-screen rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden shadow-lg sm:shadow-xl md:shadow-2xl">
             {/* Slideshow */}
@@ -428,9 +428,9 @@ export default function About() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-cafe-dark mb-4 sm:mb-6 font-serif">Our Story</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-black mb-4 sm:mb-6 font-serif">Our Story</h2>
             <motion.p 
-              className="text-base sm:text-lg text-cafe-brown mb-6 sm:mb-8 max-w-3xl mx-auto"
+              className="text-base sm:text-lg text-black mb-6 sm:mb-8 max-w-3xl mx-auto"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
@@ -453,13 +453,13 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-cafe-light p-4 sm:p-6 rounded-lg sm:rounded-xl"
+                  className="bg-white p-4 sm:p-6 rounded-lg sm:rounded-xl"
                 >
                   <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-cafe-gold/10 flex items-center justify-center mx-auto mb-3 sm:mb-4">
                     {value.icon}
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-cafe-dark mb-1 sm:mb-2">{value.title}</h3>
-                  <p className="text-cafe-brown text-xs sm:text-sm">{value.description}</p>
+                  <h3 className="text-lg sm:text-xl font-bold text-black mb-1 sm:mb-2">{value.title}</h3>
+                  <p className="text-black text-xs sm:text-sm">{value.description}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -468,7 +468,7 @@ export default function About() {
       </section>
 
       {/* ===== OUR JOURNEY SECTION ===== */}
-      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-cafe-light/50">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white">
         <div className="container mx-auto">
           <motion.div 
             className="text-center mb-12 sm:mb-16"
@@ -477,8 +477,8 @@ export default function About() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-cafe-dark mb-3 sm:mb-4 font-serif">Our Journey</h2>
-            <p className="text-cafe-brown max-w-2xl mx-auto text-sm sm:text-base">
+            <h2 className="text-3xl sm:text-4xl font-bold text-black mb-3 sm:mb-4 font-serif">Our Journey</h2>
+            <p className="text-black max-w-2xl mx-auto text-sm sm:text-base">
               A timeline of our coffee adventure and community impact
             </p>
           </motion.div>
@@ -487,7 +487,7 @@ export default function About() {
           <div className="relative max-w-4xl mx-auto">
             {/* Vertical line - hidden on mobile */}
             <motion.div 
-              className="hidden sm:block absolute left-1/2 h-full w-0.5 bg-cafe-gold/30 transform -translate-x-1/2"
+              className="hidden sm:block absolute left-1/2 h-full w-0.5 bg-white transform -translate-x-1/2"
               initial={{ scaleY: 0 }}
               whileInView={{ scaleY: 1 }}
               transition={{ duration: 1 }}
@@ -505,7 +505,7 @@ export default function About() {
                   viewport={{ once: true }}
                 >
                   {/* Year badge */}
-                  <div className={`flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-cafe-gold flex items-center justify-center text-xl sm:text-2xl font-bold text-white z-10 mb-4 sm:mb-0 ${index % 2 === 0 ? 'sm:mr-6 md:mr-8' : 'sm:ml-6 md:ml-8'}`}>
+                  <div className={`flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-white flex items-center justify-center text-xl sm:text-2xl font-bold text-black z-10 mb-4 sm:mb-0 ${index % 2 === 0 ? 'sm:mr-6 md:mr-8' : 'sm:ml-6 md:ml-8'}`}>
                     {milestone.year}
                   </div>
                   
@@ -518,12 +518,12 @@ export default function About() {
                     }}
                   >
                     <div className="flex items-center mb-3 sm:mb-4">
-                      <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-cafe-gold/10 flex items-center justify-center mr-3 sm:mr-4">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white flex items-center justify-center mr-3 sm:mr-4">
                         {milestone.icon}
                       </div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-cafe-dark">{milestone.title}</h3>
+                      <h3 className="text-xl sm:text-2xl font-bold text-black">{milestone.title}</h3>
                     </div>
-                    <p className="text-cafe-brown text-sm sm:text-base">{milestone.description}</p>
+                    <p className="text-black text-sm sm:text-base">{milestone.description}</p>
                   </motion.div>
                 </motion.div>
               ))}
@@ -542,8 +542,8 @@ export default function About() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-cafe-dark mb-3 sm:mb-4 font-serif">Meet The Team</h2>
-            <p className="text-cafe-brown max-w-2xl mx-auto text-sm sm:text-base">
+            <h2 className="text-3xl sm:text-4xl font-bold text-black mb-3 sm:mb-4 font-serif">Meet The Team</h2>
+            <p className="text-black max-w-2xl mx-auto text-sm sm:text-base">
               The passionate people behind your perfect cup
             </p>
           </motion.div>
@@ -585,9 +585,9 @@ export default function About() {
                   </div>
                 </div>
                 <div className="p-4 sm:p-6">
-                  <h3 className="text-xl sm:text-2xl font-bold text-cafe-dark mb-1">{member.name}</h3>
-                  <p className="text-cafe-gold text-sm sm:text-base mb-2 sm:mb-3">{member.role}</p>
-                  <p className="text-cafe-brown text-xs sm:text-sm">{member.bio}</p>
+                  <h3 className="text-xl sm:text-2xl font-bold text-black mb-1">{member.name}</h3>
+                  <p className="text-black text-sm sm:text-base mb-2 sm:mb-3">{member.role}</p>
+                  <p className="text-black text-xs sm:text-sm">{member.bio}</p>
                 </div>
               </motion.div>
             ))}
@@ -596,7 +596,7 @@ export default function About() {
       </section>
 
       {/* ===== COMMUNITY SECTION ===== */}
-      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-cafe-dark text-black">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white text-black">
         <div className="container mx-auto text-center">
           <motion.h2 
             className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 font-serif"
@@ -605,11 +605,11 @@ export default function About() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            More Than <span className="text-cafe-gold">Coffee</span>
+            More Than <span className="text-black">Coffee</span>
           </motion.h2>
           
           <motion.p 
-            className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-8 sm:mb-12"
+            className="text-black sm:text-lg md:text-xl max-w-3xl mx-auto mb-8 sm:mb-12"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
@@ -639,8 +639,8 @@ export default function About() {
                 viewport={{ once: true }}
                 className="bg-white/10 rounded-lg sm:rounded-xl p-4 sm:p-6 backdrop-blur-sm hover:bg-white/20 transition-all"
               >
-                <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-cafe-gold mb-1 sm:mb-2">{stat.number}</p>
-                <p className="text-xs sm:text-sm md:text-base">{stat.label}</p>
+                <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-1 sm:mb-2">{stat.number}</p>
+                <p className="text-xs sm:text-sm md:text-base text-black">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>

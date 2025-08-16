@@ -109,7 +109,7 @@ export default function Home() {
                 <motion.a
                   href={link.path}
                   onClick={() => setActiveLink(link.name)}
-                  className={`relative z-10 text-lg ${activeLink === link.name ? 'text-cafe-gold' : 'text-black'} hover:text-cafe-gold transition-colors px-2 py-1`}
+                  className={`relative z-10 text-lg ${activeLink === link.name ? 'text-black' : 'text-black'} hover:text-cafe-gold transition-colors px-2 py-1`}
                   whileHover={{
                     color: "#D4A762",
                   }}
@@ -322,7 +322,7 @@ export default function Home() {
                 }}
                 className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all"
               >
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-cafe-gold/10 flex items-center justify-center mb-4 sm:mb-6">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full text-black bg-cafe-gold/10 flex items-center justify-center mb-4 sm:mb-6">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl sm:text-2xl font-bold text-black mb-2 sm:mb-3">{feature.title}</h3>
