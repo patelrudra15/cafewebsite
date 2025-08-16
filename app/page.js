@@ -220,7 +220,7 @@ export default function Home() {
             className="md:w-1/2 order-2 md:order-1 mt-8 md:mt-0"
           >
             <motion.h1
-              className="text-4xl sm:text-5xl md:text-6xl font-bold text-cafe-dark mb-4 md:mb-6 leading-tight"
+              className="text-4xl sm:text-5xl md:text-6xl font-bold text-black mb-4 md:mb-6 leading-tight"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
@@ -229,7 +229,7 @@ export default function Home() {
             </motion.h1>
 
             <motion.p
-              className="text-base sm:text-lg text-cafe-brown mb-6 md:mb-8 max-w-lg"
+              className="text-base sm:text-lg text-black mb-6 md:mb-8 max-w-lg"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -302,8 +302,8 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-cafe-dark mb-3 sm:mb-4">Why Choose Espreso</h2>
-            <p className="text-cafe-brown max-w-2xl mx-auto text-sm sm:text-base">
+            <h2 className="text-3xl sm:text-4xl font-bold text-black mb-3 sm:mb-4">Why Choose Espreso</h2>
+            <p className="text-black max-w-2xl mx-auto text-sm sm:text-base">
               We're committed to excellence in every aspect of your coffee experience
             </p>
           </motion.div>
@@ -325,8 +325,8 @@ export default function Home() {
                 <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-cafe-gold/10 flex items-center justify-center mb-4 sm:mb-6">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold text-cafe-dark mb-2 sm:mb-3">{feature.title}</h3>
-                <p className="text-cafe-brown text-sm sm:text-base">{feature.description}</p>
+                <h3 className="text-xl sm:text-2xl font-bold text-black mb-2 sm:mb-3">{feature.title}</h3>
+                <p className="text-black text-sm sm:text-base">{feature.description}</p>
               </motion.div>
             ))}
           </div>

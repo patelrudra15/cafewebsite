@@ -228,7 +228,7 @@ export default function Menu() {
   const cartTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
   return (
-    <div className="bg-cafe-light min-h-screen relative overflow-x-hidden">
+    <div className="bg-white min-h-screen relative overflow-x-hidden">
       <Head>
         <title>Espreso | Premium Artisan Cafe - Menu</title>
         <meta name="description" content="Explore our handcrafted coffee & pastries menu" />
@@ -253,7 +253,7 @@ export default function Menu() {
             <motion.div
               whileHover={{ rotateY: 180 }}
               transition={{ duration: 0.6 }}
-              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-cafe-gold flex items-center justify-center shadow-lg"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center shadow-lg"
             >
               <FiCoffee className="text-black text-lg sm:text-xl" />
             </motion.div>
@@ -288,7 +288,7 @@ export default function Menu() {
                 {activeLink === link.name && (
                   <motion.div 
                     layoutId="navUnderline"
-                    className="absolute bottom-0 left-0 w-full h-0.5 bg-cafe-gold"
+                    className="absolute bottom-0 left-0 w-full h-0.5 bg-white"
                     transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
                   />
                 )}
@@ -309,7 +309,7 @@ export default function Menu() {
                 <motion.span 
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  className="absolute -top-1 -right-1 bg-cafe-gold text-black text-xs font-bold rounded-full w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center"
+                  className="absolute -top-1 -right-1 bg-white text-black text-xs font-bold rounded-full w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center"
                 >
                   {cart.reduce((sum, item) => sum + item.quantity, 0)}
                 </motion.span>
@@ -410,7 +410,7 @@ export default function Menu() {
               whileHover={{ scale: 1.05, backgroundColor: "#D4A762" }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setSelectedCategory(null)}
-              className={`px-4 sm:px-6 py-1 sm:py-2 rounded-full text-sm sm:text-base ${!selectedCategory ? 'bg-cafe-gold text-black' : 'bg-cafe-light text-cafe-brown'}`}
+              className={`px-4 sm:px-6 py-1 sm:py-2 rounded-full text-sm sm:text-base ${!selectedCategory ? 'bg-white text-black' : 'bg-white text-black'}`}
             >
               All Items
             </motion.button>
@@ -420,7 +420,7 @@ export default function Menu() {
                 whileHover={{ scale: 1.05, backgroundColor: "#D4A762" }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 sm:px-6 py-1 sm:py-2 rounded-full text-sm sm:text-base ${selectedCategory === category ? 'bg-cafe-gold text-black' : 'bg-cafe-light text-cafe-brown'}`}
+                className={`px-4 sm:px-6 py-1 sm:py-2 rounded-full text-sm sm:text-base ${selectedCategory === category ? 'bg-white text-black' : 'bg-white text-black'}`}
               >
                 {category}
               </motion.button>
@@ -467,7 +467,7 @@ export default function Menu() {
                       initial={{ x: -20, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ delay: 0.1 }}
-                      className="text-2xl sm:text-3xl font-bold text-cafe-dark mb-1 sm:mb-2"
+                      className="text-2xl sm:text-3xl font-bold text-black mb-1 sm:mb-2"
                     >
                       {selectedItem.name}
                     </motion.h1>
@@ -476,7 +476,7 @@ export default function Menu() {
                       initial={{ x: -20, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ delay: 0.2 }}
-                      className="text-sm sm:text-base text-cafe-brown mb-4 sm:mb-6"
+                      className="text-sm sm:text-base text-black mb-4 sm:mb-6"
                     >
                       {selectedItem.description}
                     </motion.p>
@@ -493,7 +493,7 @@ export default function Menu() {
                           <motion.div
                             key={size}
                             whileHover={{ scale: 1.02 }}
-                            className="flex justify-between items-center bg-cafe-light p-3 sm:p-4 rounded-lg"
+                            className="flex justify-between items-center bg-white p-3 sm:p-4 rounded-lg"
                           >
                             <div>
                               <span className="capitalize font-medium text-sm sm:text-base text-cafe-dark">{size}</span>
@@ -504,7 +504,7 @@ export default function Menu() {
                                 onClick={() => addToCart(selectedItem, size)}
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.9 }}
-                                className="bg-cafe-gold hover:bg-cafe-brown text-black px-2 sm:px-3 py-1 rounded-lg shadow-md text-sm sm:text-base"
+                                className="bg-white hover:bg-cafe-brown text-black px-2 sm:px-3 py-1 rounded-lg shadow-md text-sm sm:text-base"
                               >
                                 Add
                               </motion.button>
@@ -576,7 +576,7 @@ export default function Menu() {
                             <motion.span 
                               key={size}
                               whileHover={{ scale: 1.05 }}
-                              className="bg-cafe-light text-cafe-dark text-xs px-2 sm:px-3 py-1 rounded-full"
+                              className="bg-white text-cafe-dark text-xs px-2 sm:px-3 py-1 rounded-full"
                             >
                               {size}: ${price.toFixed(2)}
                             </motion.span>
@@ -636,7 +636,7 @@ export default function Menu() {
                       onClick={() => setIsCartOpen(false)}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="mt-3 sm:mt-4 bg-cafe-gold text-black px-4 sm:px-6 py-1 sm:py-2 rounded-lg text-sm sm:text-base"
+                      className="mt-3 sm:mt-4 bg-white text-black px-4 sm:px-6 py-1 sm:py-2 rounded-lg text-sm sm:text-base"
                     >
                       Browse Menu
                     </motion.button>
@@ -662,7 +662,7 @@ export default function Menu() {
                               <motion.button
                                 onClick={() => removeFromCart(index)}
                                 whileTap={{ scale: 0.8 }}
-                                className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-cafe-light text-cafe-dark flex items-center justify-center"
+                                className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white text-cafe-dark flex items-center justify-center"
                               >
                                 <FiMinus className="w-2 h-2 sm:w-3 sm:h-3" />
                               </motion.button>
@@ -670,7 +670,7 @@ export default function Menu() {
                               <motion.button
                                 onClick={() => addToCart(item.item, item.size)}
                                 whileTap={{ scale: 0.8 }}
-                                className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-cafe-gold text-black flex items-center justify-center"
+                                className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white text-black flex items-center justify-center"
                               >
                                 <FiPlus className="w-2 h-2 sm:w-3 sm:h-3" />
                               </motion.button>
